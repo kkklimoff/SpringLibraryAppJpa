@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Show</title>
+</head>
+<body>
+<p th:text="${client.getName() + ', ' + client.getYearOfBirth()}">VALUE</p>
+
+<div th:if="${client.getBooks().isEmpty()}">
+  <p>Человек пока не взял ни одной книги</p>
+  <hr/>
+</div>
+
+<div th:if="${!client.getBooks().isEmpty()}">
+  <hr/>
+  <b>Книги:</b>
+  <br/>
+  <table th:each="book : ${client.getBooks()}">
+    <tr>
+      <td>
+                <span th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYearOfPublication()}"
+                      th:style="${book.isOverdue()} ? 'color: red' : 'color: black'">
+                    book
+                </span>
+      </td>
+    </tr>
+  </table>
+  <hr/>
+</div>
+
+<form th:method="GET" th:action="@{/clients/{id}/edit(id=${client.getId()})}">
+  <input type="submit" value="Редактировать"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/clients/{id}(id=${client.getId()})}">
+  <input type="submit" value="Удалить"/>
+</form>
+
+</body>
+</html>
