@@ -9,13 +9,13 @@
 <p th:text="${client.getName() + ', ' + client.getYearOfBirth()}">VALUE</p>
 
 <div th:if="${client.getBooks().isEmpty()}">
-  <p>Человек пока не взял ни одной книги</p>
+  <p>This client is yet to take any books!</p>
   <hr/>
 </div>
 
 <div th:if="${!client.getBooks().isEmpty()}">
   <hr/>
-  <b>Книги:</b>
+  <b>Books:</b>
   <br/>
   <table th:each="book : ${client.getBooks()}">
     <tr>
@@ -31,11 +31,11 @@
 </div>
 
 <form th:method="GET" th:action="@{/clients/{id}/edit(id=${client.getId()})}">
-  <input type="submit" value="Редактировать"/>
+  <input type="submit" value="Edit"/>
 </form>
 
 <form th:method="DELETE" th:action="@{/clients/{id}(id=${client.getId()})}">
-  <input type="submit" value="Удалить"/>
+  <input type="submit" value="Delete"/>
 </form>
 
 </body>

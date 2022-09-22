@@ -14,15 +14,15 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotEmpty(message = "Имя не может быть пустым")
-    @Size(max = 100, message = "Имя должно быть в пределах 100 символов")
-    @Pattern(regexp = "[A-Z]\\w+ [A-Z]\\w+", message = "Имя должно иметь формат \"Имя Фамилия\"")
+    @NotEmpty(message = "Client's name can not be empty!")
+    @Size(max = 100, message = "Client's name can not be longer than 100 characters!")
+    @Pattern(regexp = "[A-Z]\\w+ [A-Z]\\w+", message = "Name should be like \"Name Surname\"")
     @Column(name = "name")
     private String name;
 
-    @Max(value = 2022, message = "Никаких клиентов из будущего!")
-    @Min(value = 1900, message = "Без электората Байдена!")
-    @Column(name = "birth_year")
+    @Max(value = 2022, message = "Year of birth can not be greater than current year!")
+    @Min(value = 1900, message = "Minimal year of birth allowed is 1900!")
+    @Column(name = "year_of_birth")
     private int yearOfBirth;
 
     @OneToMany(mappedBy = "currentOwner")

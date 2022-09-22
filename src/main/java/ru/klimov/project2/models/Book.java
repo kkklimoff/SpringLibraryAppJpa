@@ -19,18 +19,18 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotEmpty(message = "Название книги не может быть пустым")
-    @Size(min = 1, max = 200, message = "Название книги должно быть в пределах 200 символов")
+    @NotEmpty(message = "Book title can not be empty!")
+    @Size(min = 1, max = 100, message = "Book title have to be 1 to 100 characters long!")
     @Column(name = "title")
     private String title;
 
-    @NotEmpty(message = "Имя автора не может быть пустым")
-    @Size(min = 2, max = 100, message = "Имя автора должно быть в пределах 100 символов")
+    @NotEmpty(message = "Author name can not be empty!")
+    @Size(min = 2, max = 100, message = "Author name have to be 2 to 100 characters long!")
     @Column(name = "author")
     private String author;
 
-    @Min(value = 1, message = "Книги не раньше 1 года")
-    @Max(value = 2022, message = "Никаких книг из будущего")
+    @Min(value = 1, message = "Earliest year of publication is 1!")
+    @Max(value = 2022, message = "Book can not be from the future!")
     @Column(name = "year_of_publication")
     private int yearOfPublication;
 
